@@ -2,6 +2,7 @@ import psutil
 import os
 import time
 
+#print(psutil.virtual_memory())
 def get_random_num(range_lim):
     info = psutil.sensors_temperatures()
     sum_temps = 0
@@ -15,4 +16,5 @@ def get_random_num(range_lim):
             salt += float(temp)
         else:
             exit()
-    return int(str(float(sum_temps / salt)%range_lim)[-2])
+    extra_seasoning = float(str(psutil.virtual_memory()[1])[-3:-1])
+    return int((float(sum_temps + salt)+extra_seasoning)%range_lim)
