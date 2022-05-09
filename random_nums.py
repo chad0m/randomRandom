@@ -15,6 +15,7 @@ def get_random_num(range_lim):
         temp = os.fork()
         if temp != 0:
             salt += float(temp)
+            waitpid(temp, 0)
         else:
             exit()
 
